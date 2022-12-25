@@ -1,9 +1,20 @@
-h1 User
-a(href="/users/create") Create 
-form(action="users/search", method = "GET") 
-    input(type="text", name="q" )
-    button Search  
-    
-ul 
-each user in users
-    li= user.name
+extends ../layout/commom
+
+block content 
+    h1 User
+    a(href="/users/create") Create 
+    form(action="users/search", method = "GET" ,class="d-flex") 
+        input(type="text", name="q" )
+        button Search  
+    table.table
+        tr 
+            th Name 
+            th Phone 
+        each user in users
+            tr 
+                td=user.name 
+                td=user.phone
+    ul 
+    each user in users
+        li= user.name
+        li= user.phone
