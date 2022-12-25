@@ -21,7 +21,21 @@ module.exports.create = function(req, res){
     res.render('users/create')
     }
 module.exports.createUser =function(req, res){
+    var errors =[];
+    if(!req.body.name){
+        errors.push('Name is required')
+    }
+    if(!req.body.phone){
+        errors.push('Phone is required')
+    }
+    if(errors.length){
+        res.render('users/create',{
+            errors:errors,
+           values:req.body
+        });
+        return;
+    }   
+   
     users.push(req.body)
-    console.log(req.body)
     res.redirect('/users');
     }
