@@ -1,0 +1,17 @@
+extends ../layout/commom
+
+block content 
+    h1 Login
+    if errors
+        each error in errors 
+            .alert.alert-danger= error
+
+    form(action="/auth/login", method="POST")
+        .form-group
+             label(for="email") Email
+             input#email(name="email" type="text" ,value=values ? values.email : '')
+        .form-group
+             label(for="passwork") Passwork
+             input#passwork(name="passwork" type="passwork",value=values ? values.passwork : '')
+
+        button.btn.btn-primary Login 
